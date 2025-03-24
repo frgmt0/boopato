@@ -2,10 +2,6 @@ use crate::CommandError;
 use crate::db::JobType;
 use rand::Rng;
 
-const WORK_COOLDOWN_SECS: u64 = 3600; // 1 hour cooldown
-const MIN_BOOPS: f64 = 5.0;
-const MAX_BOOPS: f64 = 25.0;
-
 /// Work in the mines and earn boops for the community
 #[poise::command(slash_command, prefix_command, track_edits)]
 pub async fn work(ctx: crate::Context<'_>) -> Result<(), CommandError> {

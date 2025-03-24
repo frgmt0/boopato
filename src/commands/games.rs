@@ -905,7 +905,7 @@ impl Connect4 {
             
             // Special scoring for horizontal patterns on bottom row
             // This addresses the issue where the AI missed the user's horizontal win
-            let yellow_count = window.iter().filter(|&&c| c == Connect4Cell::Yellow).count();
+            let _yellow_count = window.iter().filter(|&&c| c == Connect4Cell::Yellow).count();
             let red_count = window.iter().filter(|&&c| c == Connect4Cell::Red).count();
             let empty_count = window.iter().filter(|&&c| c == Connect4Cell::Empty).count();
             

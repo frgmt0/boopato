@@ -9,14 +9,14 @@ pub async fn redistribute(
     percentage: Option<f64>,
 ) -> Result<(), CommandError> {
     // Get user info
-    let user_id = ctx.author().id.to_string();
+    let _user_id = ctx.author().id.to_string();
     let server_id = match ctx.guild_id() {
         Some(id) => id.to_string(),
         None => return Err("This command can only be used in a server, comrade!".into()),
     };
     
     // Check if user has admin privileges to run this command
-    if let Some(guild_id) = ctx.guild_id() {
+    if let Some(_guild_id) = ctx.guild_id() {
         match ctx.author_member().await {
             Some(member) => {
                 let permissions = member.permissions(ctx).unwrap_or_default();
@@ -153,7 +153,7 @@ pub async fn redistribute(
 pub async fn schedule_redistribution(
     ctx: crate::Context<'_>,
     #[description = "Optional percentage to take (1-30%, default: 10%)"] 
-    percentage: Option<f64>,
+    _percentage: Option<f64>,
 ) -> Result<(), CommandError> {
     ctx.say("This feature is planned for a future update, comrade! For now, use the `/redistribute` command manually to spread the wealth.").await?;
     Ok(())

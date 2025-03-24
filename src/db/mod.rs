@@ -79,6 +79,7 @@ pub struct Database {
     conn: Arc<Mutex<AsyncConnection>>,
 }
 
+#[allow(dead_code)]
 impl Database {
     pub async fn new(db_path: &str) -> DbResult<Self> {
         let is_new_db = !Path::new(db_path).exists();

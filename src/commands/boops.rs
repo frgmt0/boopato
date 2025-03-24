@@ -76,7 +76,7 @@ pub async fn boops(ctx: crate::Context<'_>) -> Result<(), CommandError> {
     if user_count < 3 {
         // Check if user is admin
         let is_admin = match ctx.guild_id() {
-            Some(guild_id) => match ctx.author_member().await {
+            Some(_guild_id) => match ctx.author_member().await {
                 Some(member) => member.permissions.map_or(false, |perms| perms.administrator()),
                 None => false,
             },

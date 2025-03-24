@@ -7,7 +7,7 @@ const OWNER_ID: &str = "1151230208783945818";
 /// Check if the user has admin permissions
 async fn check_if_admin(ctx: crate::Context<'_>) -> Result<bool, CommandError> {
     let member = match ctx.guild_id() {
-        Some(guild_id) => match ctx.author_member().await {
+        Some(_guild_id) => match ctx.author_member().await {
             Some(member) => member,
             None => {
                 return Err("Failed to get member information".into());
@@ -201,7 +201,7 @@ pub async fn distribute(ctx: crate::Context<'_>) -> Result<(), CommandError> {
     
     // If the server seems to have few users, check the guild member count
     if user_count < 3 {
-        let guild_id = ctx.guild_id().unwrap();
+        let _guild_id = ctx.guild_id().unwrap();
         
         match ctx.guild() {
             Some(guild) => {
@@ -295,7 +295,7 @@ pub async fn distribute(ctx: crate::Context<'_>) -> Result<(), CommandError> {
                             ctx.say("Now continuing with distribution...").await?;
                             
                             // Get updated user count
-                            let new_user_count = db.get_server_user_count(&server_id).await?;
+                            let _new_user_count = db.get_server_user_count(&server_id).await?;
                             
                             // Get current distribution status before distribution
                             let (old_round, _, _) = db.get_distribution_status(&server_id).await?;
