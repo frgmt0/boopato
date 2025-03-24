@@ -1,6 +1,4 @@
-use crate::Data;
 use crate::CommandError;
-use poise::serenity_prelude as serenity;
 
 /// Display your boops and the communal boops
 #[poise::command(slash_command, prefix_command, track_edits)]

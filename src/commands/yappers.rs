@@ -1,6 +1,4 @@
-use crate::Data;
 use crate::CommandError;
-use poise::serenity_prelude as serenity;
 
 /// Show the top talkers in the server (our great orators)
 #[poise::command(slash_command, prefix_command, track_edits)]

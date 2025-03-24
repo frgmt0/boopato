@@ -1,8 +1,5 @@
-use crate::Data;
 use crate::CommandError;
-use poise::serenity_prelude as serenity;
 use rand::Rng;
-use std::time::{Duration, UNIX_EPOCH};
 
 const COMMIT_COOLDOWN_SECS: u64 = 1800; // 30 minutes cooldown
 

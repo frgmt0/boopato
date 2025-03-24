@@ -3,7 +3,6 @@ use poise::serenity_prelude as serenity;
 use std::fmt;
 use std::time::{Duration, Instant};
 use rand::Rng;
-use rand::seq::SliceRandom;
 use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 

@@ -1,4 +1,4 @@
-use rusqlite::{params, Connection, Result};
+use rusqlite::params;
 use tokio_rusqlite::Connection as AsyncConnection;
 use std::sync::Arc;
 use tokio::sync::Mutex;

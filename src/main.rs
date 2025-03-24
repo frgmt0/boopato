@@ -4,11 +4,9 @@ mod db;
 use poise::serenity_prelude as serenity;
 use dotenv::dotenv;
 use std::env;
-use std::sync::Arc;
 use rand::Rng;
 use serde::{Deserialize, Serialize};
 use reqwest;
-use serde_json::json;
 
 // Define a type for the user data that will be passed to all command functions
 type CommandError = Box<dyn std::error::Error + Send + Sync>;

@@ -1,7 +1,5 @@
 use crate::db::JobType;
-use crate::Data;
 use crate::CommandError;
-use poise::serenity_prelude as serenity;
 use rand::Rng;
 
 /// View the available jobs in our collective

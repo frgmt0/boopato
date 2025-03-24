@@ -1,6 +1,5 @@
 use crate::CommandError;
 use crate::db::JobType;
-use poise::serenity_prelude as serenity;
 use rand::Rng;
 
 const WORK_COOLDOWN_SECS: u64 = 3600; // 1 hour cooldown
