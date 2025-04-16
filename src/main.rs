@@ -56,6 +56,7 @@ async fn main() {
                 commands::redistribute(),
                 commands::schedule_redistribution(),
                 commands::about(),
+                commands::help(),
             ],
             prefix_options: poise::PrefixFrameworkOptions {
                 prefix: Some("!".into()),
