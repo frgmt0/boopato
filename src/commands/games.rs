@@ -2,9 +2,10 @@ use crate::CommandError;
 use poise::serenity_prelude as serenity;
 use std::fmt;
 use std::time::{Duration, Instant};
-use rand::Rng;
-use std::collections::HashMap;
+use rand::{Rng, seq::SliceRandom};
+use std::collections::{HashMap, HashSet};
 use std::sync::{Arc, Mutex};
+use chrono;
 
 // Tic-Tac-Toe Game
 #[derive(Clone, Copy, PartialEq)]
@@ -1494,19 +1495,42 @@ impl ComradeClicker {
 pub async fn game(
     ctx: crate::Context<'_>,
 ) -> Result<(), CommandError> {
-    ctx.say(
-        "**☭ Available Communist Games ☭**\n\n\
-        Use one of the following commands to play:\n\
-        • `/tictactoe [@user]` - Play Tic-Tac-Toe against another user or the computer\n\
-        • `/clicker` - Test your reaction time in Comrade Clicker\n\
-        • `/connect4 [@user]` - Play Connect 4: People's Revolution Edition\n\n\
-        Glory to the collective!"
-    ).await?;
+    ctx.send(|m| {
+        m.embed(|e| {
+            e.title("☭ State-Approved Entertainment ☭")
+             .description("The Ministry of Leisure presents approved games for your recreational period.")
+             .color(serenity::Color::RED)
+             .thumbnail("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Soviet_Union_state_emblem.svg/240px-Soviet_Union_state_emblem.svg.png")
+             .field(
+                "Classic Games", 
+                "• `/tictactoe [@user]` - Tactical Grid Competition\n\
+                 • `/connect4 [@user]` - People's Revolution Edition", 
+                false
+             )
+             .field(
+                "Skill Games", 
+                "• `/clicker` - Test your reaction time in Comrade Clicker\n\
+                 • `/kremlin_secrets` - Word Association Challenge", 
+                false
+             )
+             .field(
+                "Language Games", 
+                "• `/soviet_hangman` - Ideological Rehabilitation Challenge", 
+                false
+             )
+             .field(
+                "Economic Games", 
+                "• `/blackjack` - State-Sanctioned Resource Allocation Game", 
+                false
+             )
+             .footer(|f| f.text("Recreation increases worker productivity by 27%. Glory to the collective!"))
+        })
+    }).await?;
     
     Ok(())
 }
 
-/// Play a game of tic-tac-toe alone or with a friend
+/// tic-tac-toe
 #[poise::command(slash_command, prefix_command, track_edits)]
 pub async fn tictactoe(
     ctx: crate::Context<'_>,
@@ -1755,7 +1779,7 @@ pub async fn tictactoe(
     Ok(())
 }
 
-/// Play Comrade Clicker - test your reaction time for the Motherland!
+/// comrade clicker
 #[poise::command(slash_command, prefix_command, track_edits)]
 pub async fn clicker(
     ctx: crate::Context<'_>,
@@ -2178,7 +2202,7 @@ pub async fn clicker(
     Ok(())
 }
 
-/// Play a game of Connect 4 - The People's Revolution Edition!
+/// connect 4
 #[poise::command(slash_command, prefix_command, track_edits)]
 pub async fn connect4(
     ctx: crate::Context<'_>,

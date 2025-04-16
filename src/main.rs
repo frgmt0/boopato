@@ -35,7 +35,6 @@ async fn main() {
         .options(poise::FrameworkOptions {
             commands: vec![
                 commands::work(),
-                commands::yappers(),
                 commands::commit(),
                 commands::boops(),
                 commands::claim(),
@@ -52,8 +51,11 @@ async fn main() {
                 commands::tictactoe(),
                 commands::clicker(),
                 commands::connect4(),
+                commands::kremlin_secrets(),
+                commands::soviet_hangman(),
                 commands::redistribute(),
                 commands::schedule_redistribution(),
+                commands::about(),
             ],
             prefix_options: poise::PrefixFrameworkOptions {
                 prefix: Some("!".into()),

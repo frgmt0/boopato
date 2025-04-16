@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  boopato:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: boopato
+    restart: unless-stopped
+    environment:
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - DATABASE_PATH=/app/data/boopato.db
+    volumes:
+      - boopato-data:/app/data
+    networks:
+      - boopato-network
+
+volumes:
+  boopato-data:
+    name: boopato-data
+
+networks:
+  boopato-network:
+    name: boopato-network

@@ -30,12 +30,11 @@ pub async fn commit(ctx: crate::Context<'_>) -> Result<(), CommandError> {
         let elapsed = now - last_commit;
         
         if elapsed < COMMIT_COOLDOWN_SECS as i64 {
-            let remaining = COMMIT_COOLDOWN_SECS as i64 - elapsed;
-            let minutes = remaining / 60;
-            let seconds = remaining % 60;
+            // Calculate when cooldown ends
+            let cooldown_end = last_commit + COMMIT_COOLDOWN_SECS as i64;
             
             ctx.say(format!(
-                "Comrade, you must lay low for {minutes} minutes and {seconds} seconds before committing any more acts!",
+                "Comrade, you must lay low until <t:{cooldown_end}:R> before committing any more acts!",
             )).await?;
             return Ok(());
         }
