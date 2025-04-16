@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Config
-REPO_PATH="/app/boopato"
+REPO_PATH="${REPO_PATH:-/app/boopato}"
 LOG_FILE="/var/log/boopato-autoupdate.log"
 POLL_INTERVAL=300  # 5 minutes in seconds
 

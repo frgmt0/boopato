@@ -16,6 +16,22 @@ services:
     networks:
       - boopato-network
 
+  watcher:
+    build:
+      context: .
+      dockerfile: Dockerfile.watcher
+    container_name: boopato-watcher
+    restart: unless-stopped
+    environment:
+      - REPO_PATH=/app/boopato
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - .:/app/boopato
+    networks:
+      - boopato-network
+    depends_on:
+      - boopato
+
 volumes:
   boopato-data:
     name: boopato-data

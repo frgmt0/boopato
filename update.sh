@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # config
-REPO_PATH="/app/boopato"
+REPO_PATH="${REPO_PATH:-/app/boopato}"
 CONTAINER_NAME="boopato"
 NETWORK_NAME="boopato-network"
 VOLUME_NAME="boopato-data"

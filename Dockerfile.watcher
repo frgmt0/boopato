@@ -1,0 +1,12 @@
+FROM alpine:latest
+
+RUN apk add --no-cache bash git docker-cli docker-compose
+
+WORKDIR /app
+
+COPY update.sh /app/update.sh
+COPY autoupdate.sh /app/autoupdate.sh
+
+RUN chmod +x /app/update.sh /app/autoupdate.sh
+
+CMD ["/app/autoupdate.sh"]
