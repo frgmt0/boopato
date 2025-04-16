@@ -1,12 +1,30 @@
 FROM alpine:latest
 
-RUN apk add --no-cache bash git docker-cli docker-compose
+RUN apk add --no-cache bash git docker docker-compose curl
 
 WORKDIR /app
 
+# Copy the scripts
 COPY update.sh /app/update.sh
 COPY autoupdate.sh /app/autoupdate.sh
 
+# Make scripts executable
 RUN chmod +x /app/update.sh /app/autoupdate.sh
 
+# Create a directory for the repository
+RUN mkdir -p /app/boopato
+
+# Configure git
+RUN git config --global user.email "bot@example.com" && \
+    git config --global user.name "Bot" && \
+    git config --global pull.rebase false
+
+# Create log directory
+RUN mkdir -p /var/log
+
+# Environment variables
+ENV REPO_PATH=/app/boopato
+ENV REPO_URL=https://github.com/frgmt0/boopato.git
+
+# Run the autoupdate script
 CMD ["/app/autoupdate.sh"]
